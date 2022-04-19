@@ -8,6 +8,10 @@ export class RegisterUserInput {
   @Field()
   phoneNumber: string;
 
+  numberVerified?: boolean;
+
+  verificationCode?: string;
+
   @Field()
   password: string;
 }

@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type User {
+  id: String!
   name: String!
   phoneNumber: String!
 }
@@ -13,10 +14,16 @@ type Query {
 
 type Mutation {
   registerUser(data: RegisterUserInput!): User!
+  verifyPhoneNumber(data: VerifyUserPhoneNumberInput!): User!
 }
 
 input RegisterUserInput {
   name: String!
   phoneNumber: String!
   password: String!
+}
+
+input VerifyUserPhoneNumberInput {
+  userId: String!
+  verificationCode: String!
 }

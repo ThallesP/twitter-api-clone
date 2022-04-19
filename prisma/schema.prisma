@@ -13,9 +13,11 @@ datasource db {
 model User {
   id String @id @default(uuid())
 
-  name        String
-  phoneNumber String @unique
-  password    String
+  name             String
+  phoneNumber      String  @unique
+  numberVerified   Boolean @default(false)
+  verificationCode String?
+  password         String
 
   tweets Tweet[]
 
