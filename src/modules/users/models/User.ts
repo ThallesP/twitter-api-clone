@@ -9,6 +9,9 @@ export class User {
   name: string;
 
   @Field()
+  numberVerified: boolean;
+
+  @Field()
   phoneNumber: string;
 
   verificationCode: string;

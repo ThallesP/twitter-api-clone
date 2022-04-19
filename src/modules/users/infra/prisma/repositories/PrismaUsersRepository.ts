@@ -1,12 +1,26 @@
 import { User } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
-import { IUsersRepository } from 'src/modules/users/repositories/IUsersRepository';
+import {
+  IUpdateUser,
+  IUsersRepository,
+} from 'src/modules/users/repositories/IUsersRepository';
 import { PrismaService } from 'src/shared/infra/prisma/prisma.service';
 import { RegisterUserInput } from 'src/modules/users/inputs/RegisterUserInput';
 
 @Injectable()
 export class PrismaUsersRepository implements IUsersRepository {
   constructor(private prismaService: PrismaService) {}
+
+  async update({ id, newUser }: IUpdateUser): Promise<User> {
+    return this.prismaService.user.update({
+      where: { id },
+      data: { ...newUser },
+    });
+  }
+
+  async findByPhoneNumber(phoneNumber: string): Promise<User> {
+    return this.prismaService.user.findUnique({ where: { phoneNumber } });
+  }
 
   async findUserById(id: string): Promise<User | null> {
     const user = await this.prismaService.user.findUnique({

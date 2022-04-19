@@ -5,7 +5,13 @@
 type User {
   id: String!
   name: String!
+  numberVerified: Boolean!
   phoneNumber: String!
+}
+
+type UserToken {
+  accessToken: String!
+  user: User!
 }
 
 type Query {
@@ -15,6 +21,7 @@ type Query {
 type Mutation {
   registerUser(data: RegisterUserInput!): User!
   verifyPhoneNumber(data: VerifyUserPhoneNumberInput!): User!
+  loginUser(data: LoginUserInput!): UserToken!
 }
 
 input RegisterUserInput {
@@ -24,6 +31,10 @@ input RegisterUserInput {
 }
 
 input VerifyUserPhoneNumberInput {
-  userId: String!
   verificationCode: String!
+}
+
+input LoginUserInput {
+  phoneNumber: String!
+  password: String!
 }

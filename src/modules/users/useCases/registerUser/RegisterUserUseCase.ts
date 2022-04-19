@@ -13,14 +13,14 @@ export class RegisterUserUseCase {
   ) {}
 
   async execute({ name, password, phoneNumber }: RegisterUserInput) {
-    const verificationCode = crypto.randomInt(0, 9999).toString();
+    const verificationCode = crypto.randomInt(10000, 99999).toString();
 
     await this.smsProvider.send(
       phoneNumber,
       `Welcome aboard! Here's your verification code: ${verificationCode}`,
     );
 
-    const passwordHash = await hash(password, 10);
+    const passwordHash = await hash(password, 8);
 
     const user = await this.usersRepository.create({
       name,
