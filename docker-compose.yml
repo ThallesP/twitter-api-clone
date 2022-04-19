@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  twitter-api-clone-postgres:
+    image: postgres
+    container_name: twitter-api-clone-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=twitter-api-clone
+      - POSTGRES_PASSWORD=superPassword
+    ports:
+      - '5432:5432'
+    volumes:
+      - twitterApiClonePostgresData:/data/postgres
+
+volumes:
+  twitterApiClonePostgresData:

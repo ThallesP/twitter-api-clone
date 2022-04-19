@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  name: String!
+  phoneNumber: String!
+}
+
+type Query {
+  dummy: [User!]!
+}
+
+type Mutation {
+  registerUser(data: RegisterUserInput!): User!
+}
+
+input RegisterUserInput {
+  name: String!
+  phoneNumber: String!
+  password: String!
+}
