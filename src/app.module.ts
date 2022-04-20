@@ -5,6 +5,7 @@ import { join } from 'path';
 import { UsersModule } from './modules/users/users.module';
 import { PrismaModule } from './shared/infra/prisma/prisma.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { TweetsModule } from './modules/tweets/tweets.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
       context: ({ req, res }) => ({ req, res }),
     }),
     ThrottlerModule.forRoot(),
+    TweetsModule,
   ],
   controllers: [],
   providers: [],

@@ -32,8 +32,8 @@ model Tweet {
 
   text String @db.VarChar(280)
 
-  author User   @relation(fields: [userId], references: [id])
-  userId String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

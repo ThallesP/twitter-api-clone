@@ -14,6 +14,18 @@ type UserToken {
   user: User!
 }
 
+type Tweet {
+  id: String!
+  text: String!
+  authorId: String!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   dummy: [User!]!
 }
@@ -22,6 +34,7 @@ type Mutation {
   registerUser(data: RegisterUserInput!): User!
   verifyPhoneNumber(data: VerifyUserPhoneNumberInput!): User!
   loginUser(data: LoginUserInput!): UserToken!
+  createTweet(data: CreateTweetInput!): Tweet!
 }
 
 input RegisterUserInput {
@@ -37,4 +50,8 @@ input VerifyUserPhoneNumberInput {
 input LoginUserInput {
   phoneNumber: String!
   password: String!
+}
+
+input CreateTweetInput {
+  text: String!
 }
