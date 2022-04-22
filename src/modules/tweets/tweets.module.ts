@@ -5,16 +5,20 @@ import { PrismaTweetsRepository } from './infra/prisma/repositories/PrismaTweets
 import { ITweetsRepository } from './repositories/ITweetsRepository';
 import { CreateTweetResolver } from './useCases/createTweet/CreateTweetResolver';
 import { CreateTweetUseCase } from './useCases/createTweet/CreateTweetUseCase';
+import { EditTweetResolver } from './useCases/editTweet/EditTweetResolver';
+import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
 
 @Module({
   imports: [ConfigModule.forRoot()],
   providers: [
     CreateTweetResolver,
+    EditTweetResolver,
     {
       provide: ITweetsRepository,
       useClass: PrismaTweetsRepository,
     },
     CreateTweetUseCase,
+    EditTweetUseCase,
     PrismaService,
   ],
 })

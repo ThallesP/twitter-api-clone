@@ -35,6 +35,7 @@ type Mutation {
   verifyPhoneNumber(data: VerifyUserPhoneNumberInput!): User!
   loginUser(data: LoginUserInput!): UserToken!
   createTweet(data: CreateTweetInput!): Tweet!
+  editTweet(data: EditTweetInput!): Tweet!
 }
 
 input RegisterUserInput {
@@ -53,5 +54,10 @@ input LoginUserInput {
 }
 
 input CreateTweetInput {
+  text: String!
+}
+
+input EditTweetInput {
+  tweetId: String!
   text: String!
 }
