@@ -9,6 +9,7 @@ export interface IUpdateTweet {
 export interface ITweetsRepository {
   create({ text, authorId }: CreateTweetInput): Promise<Tweet>;
   findById(id: string): Promise<Tweet>;
+  softDelete(id: string): Promise<Tweet>;
   update({ id, newTweet }: IUpdateTweet): Promise<Tweet>;
 }
 

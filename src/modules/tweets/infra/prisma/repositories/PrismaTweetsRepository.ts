@@ -11,8 +11,16 @@ import { PrismaService } from 'src/shared/infra/prisma/prisma.service';
 export class PrismaTweetsRepository implements ITweetsRepository {
   constructor(private prismaService: PrismaService) {}
 
+  async softDelete(id: string): Promise<Tweet> {
+    return this.prismaService.tweet.delete({
+      where: { id },
+    });
+  }
+
   async findById(id: string): Promise<Tweet> {
-    return this.prismaService.tweet.findUnique({ where: { id } });
+    return this.prismaService.tweet.findFirst({
+      where: { id, deletedAt: null },
+    });
   }
 
   async create({ text, authorId }: CreateTweetInput): Promise<Tweet> {
@@ -24,9 +32,9 @@ export class PrismaTweetsRepository implements ITweetsRepository {
   }
 
   async update({ id, newTweet }: IUpdateTweet): Promise<Tweet> {
-    return this.prismaService.tweet.update({
-      where: { id },
+    return this.prismaService.tweet.updateMany({
+      where: { id, deletedAt: null },
       data: { ...newTweet },
-    });
+    })[0];
   }
 }

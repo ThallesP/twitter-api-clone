@@ -5,6 +5,8 @@ import { PrismaTweetsRepository } from './infra/prisma/repositories/PrismaTweets
 import { ITweetsRepository } from './repositories/ITweetsRepository';
 import { CreateTweetResolver } from './useCases/createTweet/CreateTweetResolver';
 import { CreateTweetUseCase } from './useCases/createTweet/CreateTweetUseCase';
+import { DeleteTweetResolver } from './useCases/deleteTweet/DeleteTweetResolver';
+import { DeleteTweetUseCase } from './useCases/deleteTweet/DeleteTweetUseCase';
 import { EditTweetResolver } from './useCases/editTweet/EditTweetResolver';
 import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
 
@@ -13,12 +15,14 @@ import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
   providers: [
     CreateTweetResolver,
     EditTweetResolver,
+    DeleteTweetResolver,
     {
       provide: ITweetsRepository,
       useClass: PrismaTweetsRepository,
     },
     CreateTweetUseCase,
     EditTweetUseCase,
+    DeleteTweetUseCase,
     PrismaService,
   ],
 })
