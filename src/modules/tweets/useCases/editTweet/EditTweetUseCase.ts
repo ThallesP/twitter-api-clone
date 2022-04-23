@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { TweetExceedMaxCharactersException } from '../../exceptions/TweetExceedMaxCharactersException';
 import { TweetIsNotYoursException } from '../../exceptions/TweetIsNotYoursException';
+import { TweetNotFoundException } from '../../exceptions/TweetNotFoundException';
 import { EditTweetInput } from '../../inputs/EditTweetInput';
 import { ITweetsRepository } from '../../repositories/ITweetsRepository';
 
@@ -11,9 +12,13 @@ export class EditTweetUseCase {
   ) {}
 
   async execute({ text, tweetId, userId }: EditTweetInput) {
-    const isTweetOwnedByUser = await this.tweetsRepository.findById(tweetId);
+    const tweetExists = await this.tweetsRepository.findById(tweetId);
 
-    if (isTweetOwnedByUser.authorId != userId) {
+    if (!tweetExists) {
+      throw new TweetNotFoundException();
+    }
+
+    if (tweetExists.authorId != userId) {
       throw new TweetIsNotYoursException();
     }
 
