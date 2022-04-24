@@ -9,6 +9,8 @@ import { DeleteTweetResolver } from './useCases/deleteTweet/DeleteTweetResolver'
 import { DeleteTweetUseCase } from './useCases/deleteTweet/DeleteTweetUseCase';
 import { EditTweetResolver } from './useCases/editTweet/EditTweetResolver';
 import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
+import { ListLatestTweetsResolver } from './useCases/listLatestTweets/ListLatestTweetsResolver';
+import { ListLatestTweetsUseCase } from './useCases/listLatestTweets/ListLatestTweetsUseCase';
 
 @Module({
   imports: [ConfigModule.forRoot()],
@@ -16,6 +18,7 @@ import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
     CreateTweetResolver,
     EditTweetResolver,
     DeleteTweetResolver,
+    ListLatestTweetsResolver,
     {
       provide: ITweetsRepository,
       useClass: PrismaTweetsRepository,
@@ -23,6 +26,7 @@ import { EditTweetUseCase } from './useCases/editTweet/EditTweetUseCase';
     CreateTweetUseCase,
     EditTweetUseCase,
     DeleteTweetUseCase,
+    ListLatestTweetsUseCase,
     PrismaService,
   ],
 })

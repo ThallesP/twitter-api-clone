@@ -11,6 +11,14 @@ import { PrismaService } from 'src/shared/infra/prisma/prisma.service';
 export class PrismaTweetsRepository implements ITweetsRepository {
   constructor(private prismaService: PrismaService) {}
 
+  async listLatestTweets(): Promise<Tweet[]> {
+    return this.prismaService.tweet.findMany({
+      where: { deletedAt: null },
+      take: 10,
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
   async softDelete(id: string): Promise<Tweet> {
     return this.prismaService.tweet.delete({
       where: { id },

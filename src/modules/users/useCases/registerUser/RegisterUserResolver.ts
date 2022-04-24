@@ -1,4 +1,4 @@
-import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
+import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { RegisterUserInput } from '../../inputs/RegisterUserInput';
 import { User } from '../../models/User';
 import { RegisterUserUseCase } from './RegisterUserUseCase';
@@ -6,11 +6,6 @@ import { RegisterUserUseCase } from './RegisterUserUseCase';
 @Resolver(() => User)
 export class RegisterUserResolver {
   constructor(private registerUserUseCase: RegisterUserUseCase) {}
-
-  @Query(() => [User])
-  async dummy() {
-    return [];
-  }
 
   @Mutation(() => User)
   async registerUser(@Args('data') registerUser: RegisterUserInput) {
