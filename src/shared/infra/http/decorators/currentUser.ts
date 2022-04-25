@@ -4,6 +4,7 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 export interface AuthUser {
   userId: string;
   phoneNumber: string;
+  numberVerified: boolean;
 }
 
 export const CurrentUser = createParamDecorator(

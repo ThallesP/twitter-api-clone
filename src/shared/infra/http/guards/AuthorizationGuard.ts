@@ -8,6 +8,7 @@ import { MissingAccessTokenException } from 'src/modules/users/exceptions/Missin
 export interface IUserPayload {
   sub: string;
   phoneNumber: string;
+  numberVerified: boolean;
 }
 
 @Injectable()
@@ -34,7 +35,11 @@ export class AuthorizationGuard implements CanActivate {
     try {
       const payload = verify(token, this.JWT_SECRET) as IUserPayload;
 
-      req.user = { userId: payload.sub, phoneNumber: payload.phoneNumber };
+      req.user = {
+        userId: payload.sub,
+        phoneNumber: payload.phoneNumber,
+        numberVerified: payload.numberVerified,
+      };
 
       return true;
     } catch (error) {

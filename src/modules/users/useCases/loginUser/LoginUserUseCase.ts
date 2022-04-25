@@ -11,7 +11,7 @@ export class LoginUserUseCase {
 
   constructor(
     @Inject(IUsersRepository) private usersRepository: IUsersRepository,
-    private configService: ConfigService,
+    configService: ConfigService,
   ) {
     this.JWT_SECRET = configService.get('JWT_SECRET');
   }
@@ -29,9 +29,13 @@ export class LoginUserUseCase {
       throw new PasswordInvalidOrUserNotFoundException();
     }
 
-    const accessToken = sign({ phoneNumber }, this.JWT_SECRET, {
-      subject: user.id,
-    });
+    const accessToken = sign(
+      { phoneNumber, numberVerified: user.numberVerified },
+      this.JWT_SECRET,
+      {
+        subject: user.id,
+      },
+    );
 
     return {
       accessToken,

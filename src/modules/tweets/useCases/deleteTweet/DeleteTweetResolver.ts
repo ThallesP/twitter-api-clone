@@ -5,11 +5,12 @@ import {
   CurrentUser,
 } from 'src/shared/infra/http/decorators/currentUser';
 import { AuthorizationGuard } from 'src/shared/infra/http/guards/AuthorizationGuard';
+import { OnlyNumberVerifiedGuard } from 'src/shared/infra/http/guards/OnlyNumberVerifiedGuard';
 import { DeleteTweetInput } from '../../inputs/DeleteTweetInput';
 import { DeleteTweetUseCase } from './DeleteTweetUseCase';
 
 @Resolver()
-@UseGuards(AuthorizationGuard)
+@UseGuards(AuthorizationGuard, OnlyNumberVerifiedGuard)
 export class DeleteTweetResolver {
   constructor(private deleteTweetUseCase: DeleteTweetUseCase) {}
 

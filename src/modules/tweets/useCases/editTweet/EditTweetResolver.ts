@@ -5,12 +5,13 @@ import {
   CurrentUser,
 } from 'src/shared/infra/http/decorators/currentUser';
 import { AuthorizationGuard } from 'src/shared/infra/http/guards/AuthorizationGuard';
+import { OnlyNumberVerifiedGuard } from 'src/shared/infra/http/guards/OnlyNumberVerifiedGuard';
 import { EditTweetInput } from '../../inputs/EditTweetInput';
 import { Tweet } from '../../models/Tweet';
 import { EditTweetUseCase } from './EditTweetUseCase';
 
 @Resolver()
-@UseGuards(AuthorizationGuard)
+@UseGuards(AuthorizationGuard, OnlyNumberVerifiedGuard)
 export class EditTweetResolver {
   constructor(private editTweetUseCase: EditTweetUseCase) {}
 
