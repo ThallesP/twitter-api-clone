@@ -3,9 +3,9 @@ import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import {
   AuthUser,
   CurrentUser,
-} from 'src/shared/infra/http/decorators/currentUser';
-import { AuthorizationGuard } from 'src/shared/infra/http/guards/AuthorizationGuard';
-import { OnlyNumberVerifiedGuard } from 'src/shared/infra/http/guards/OnlyNumberVerifiedGuard';
+} from '../../../../shared/infra/http/decorators/currentUser';
+import { AuthorizationGuard } from '../../../../shared/infra/http/guards/AuthorizationGuard';
+import { OnlyNumberVerifiedGuard } from '../../../../shared/infra/http/guards/OnlyNumberVerifiedGuard';
 import { CreateTweetInput } from '../../inputs/CreateTweetInput';
 import { Tweet } from '../../models/Tweet';
 import { CreateTweetUseCase } from './CreateTweetUseCase';

@@ -2,8 +2,8 @@ import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { verify } from 'jsonwebtoken';
-import { InvalidAccessTokenException } from 'src/modules/users/exceptions/InvalidAccessTokenException';
-import { MissingAccessTokenException } from 'src/modules/users/exceptions/MissingAccessTokenException';
+import { InvalidAccessTokenException } from '../../../../modules/users/exceptions/InvalidAccessTokenException';
+import { MissingAccessTokenException } from '../../../../modules/users/exceptions/MissingAccessTokenException';
 
 export interface IUserPayload {
   sub: string;

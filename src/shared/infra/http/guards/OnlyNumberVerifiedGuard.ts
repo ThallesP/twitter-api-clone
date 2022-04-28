@@ -1,6 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { PhoneNumberNotVerifiedException } from 'src/modules/users/exceptions/PhoneNumberNotVerifiedException';
+import { PhoneNumberNotVerifiedException } from '../../../../modules/users/exceptions/PhoneNumberNotVerifiedException';
 
 @Injectable()
 export class OnlyNumberVerifiedGuard implements CanActivate {

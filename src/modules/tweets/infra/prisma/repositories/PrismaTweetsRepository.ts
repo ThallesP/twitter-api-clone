@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { Tweet } from '@prisma/client';
-import { CreateTweetInput } from 'src/modules/tweets/inputs/CreateTweetInput';
 import {
   ITweetsRepository,
   IUpdateTweet,
-} from 'src/modules/tweets/repositories/ITweetsRepository';
-import { PrismaService } from 'src/shared/infra/prisma/prisma.service';
+} from '../../../../../modules/tweets/repositories/ITweetsRepository';
+import { PrismaService } from '../../../../../shared/infra/prisma/prisma.service';
+import { CreateTweetInput } from '../../../inputs/CreateTweetInput';
 
 @Injectable()
 export class PrismaTweetsRepository implements ITweetsRepository {
