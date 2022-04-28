@@ -9,6 +9,7 @@ A Simple API using GraphQL And NestJS to simulate Twitter!
 - Docker
 - GraphQL
 - Twilio
+- NodeJS
 
 ## 🚀 Start
 
