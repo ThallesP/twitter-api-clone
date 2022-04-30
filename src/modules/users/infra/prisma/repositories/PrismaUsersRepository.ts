@@ -4,8 +4,8 @@ import {
   IUpdateUser,
   IUsersRepository,
 } from 'src/modules/users/repositories/IUsersRepository';
-import { PrismaService } from 'src/shared/infra/prisma/prisma.service';
-import { RegisterUserInput } from 'src/modules/users/inputs/RegisterUserInput';
+import { PrismaService } from '../../../../../shared/infra/prisma/prisma.service';
+import { RegisterUserInput } from '../../../../../modules/users/inputs/RegisterUserInput';
 
 @Injectable()
 export class PrismaUsersRepository implements IUsersRepository {

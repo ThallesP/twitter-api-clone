@@ -13,6 +13,7 @@ export class CreateTweetUseCase {
       throw new TweetExceedMaxCharactersException();
     }
 
+    console.log(this.tweetsRepository);
     const tweet = await this.tweetsRepository.create({ text, authorId });
 
     return tweet;
