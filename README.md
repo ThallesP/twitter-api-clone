@@ -1,7 +1,7 @@
 <h1 align="center">Twitter</h1>
 
 A Simple API using GraphQL And NestJS to simulate Twitter!  
-**And includes a feature to edit a Tweet, which Twitter hasn't implemented it yet hahaha**
+**And includes a feature to edit a Tweet, which Twitter hasn't implemented it yet hahaha.**
 
 ## 🔥 Technologies
 
