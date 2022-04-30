@@ -25,7 +25,7 @@ describe('CreateTweetResolver', () => {
         ConfigModule.forRoot({ envFilePath: `${process.cwd()}/.env.test` }),
         GraphQLModule.forRoot<ApolloDriverConfig>({
           driver: ApolloDriver,
-          autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+          autoSchemaFile: join(process.cwd(), 'src/schema.test.gql'),
           context: ({ req, res }) => ({ req, res }),
         }),
       ],
